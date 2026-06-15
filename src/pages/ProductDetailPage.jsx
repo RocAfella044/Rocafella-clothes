@@ -105,12 +105,12 @@ export function ProductDetailPage() {
                 onClick={() => {
                   dispatch(toggleFavorite(product.id))
                   showToast(
-                    isFavorite ? 'Removed from saved items' : 'Saved for later',
+                    isFavorite ? 'Removed from wishlist' : 'Wishlisted',
                     { type: 'success' }
                   )
                 }}
               >
-                {isFavorite ? '♥ Saved' : '♡ Save'}
+                {isFavorite ? '♥ Wislist' : '♡ Save'}
               </Button>
             </div>
           </form>

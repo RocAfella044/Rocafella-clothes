@@ -24,7 +24,7 @@ export function Header() {
             Shop
           </NavLink>
           <NavLink to="/favorites" className={navLinkClass}>
-            Saved {favoriteCount > 0 && `(${favoriteCount})`}
+            Wishlist {favoriteCount > 0 && `(${favoriteCount})`}
           </NavLink>
           <NavLink to="/orders" className={navLinkClass}>
             Orders
@@ -62,7 +62,7 @@ export function Header() {
             <div className="py-2">Shop</div>
           </NavLink>
           <NavLink to="/favorites" className={navLinkClass} onClick={closeMobileNav}>
-            <div className="py-2">Saved {favoriteCount > 0 && `(${favoriteCount})`}</div>
+            <div className="py-2">Wishlist {favoriteCount > 0 && `(${favoriteCount})`}</div>
           </NavLink>
           <NavLink to="/orders" className={navLinkClass} onClick={closeMobileNav}>
             <div className="py-2">Orders</div>
