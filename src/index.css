@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-canvas text-ink font-body antialiased;
+}
+
+::selection {
+  background-color: #1f2420;
+  color: #f3efe7;
+}
+
+.eyebrow {
+  @apply font-mono text-xs uppercase tracking-widest2 text-moss;
+}
+
+/* Custom scrollbar for a slightly considered feel */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f3efe7;
+}
+::-webkit-scrollbar-thumb {
+  background: #d8cfc0;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b0613c;
+}

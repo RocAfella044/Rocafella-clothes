@@ -1,0 +1,121 @@
+import { useState } from 'react'
+import { useParams, Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useFetchProduct } from '../hooks/useFetchProduct'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
+import { Spinner, ErrorMessage } from '../components/common/Feedback'
+import { RatingStars } from '../components/product/RatingStars'
+import { SizeSelector, QuantityInput } from '../components/product/ProductFormControls'
+import { Button } from '../components/common/Button'
+import { addToCart } from '../redux/slices/cartSlice'
+import { toggleFavorite, selectIsFavorite } from '../redux/slices/favoritesSlice'
+import { useUI } from '../context/UIContext'
+
+export function ProductDetailPage() {
+  const { id } = useParams()
+  const { product, status, error } = useFetchProduct(id)
+  const dispatch = useDispatch()
+  const { showToast } = useUI()
+  const isFavorite = useSelector(selectIsFavorite(id))
+
+  const [size, setSize] = useState('')
+  const [quantity, setQuantity] = useState(1)
+  const [sizeError, setSizeError] = useState('')
+
+  useDocumentTitle(product?.name)
+
+  if (status === 'loading') return <Spinner label="Loading product" />
+  if (status === 'failed') {
+    return (
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <ErrorMessage message={error} />
+        <div className="mt-4 text-center">
+          <Link to="/" className="font-mono text-xs uppercase tracking-widest2 underline">
+            Back to shop
+          </Link>
+        </div>
+      </div>
+    )
+  }
+  if (!product) return null
+
+  const handleAddToCart = (e) => {
+    e.preventDefault()
+    if (!size) {
+      setSizeError('Please select a size.')
+      return
+    }
+    setSizeError('')
+    dispatch(
+      addToCart({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        size,
+        quantity,
+      })
+    )
+    showToast(`Added ${product.name} (${size}) to cart`, { type: 'success' })
+  }
+
+  return (
+    <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      <Link to="/" className="font-mono text-xs uppercase tracking-widest2 text-ink/50 hover:text-ink">
+        ← Back to shop
+      </Link>
+
+      <div className="mt-6 grid gap-10 lg:grid-cols-2">
+        <div className="aspect-[4/5] overflow-hidden bg-sand">
+          <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
+        </div>
+
+        <div>
+          <p className="eyebrow">{product.category}</p>
+          <h1 className="mt-2 font-display text-3xl sm:text-4xl">{product.name}</h1>
+          <div className="mt-3">
+            <RatingStars rating={product.rating} />
+          </div>
+          <p className="mt-4 font-mono text-xl">NPR {product.price}</p>
+          <p className="mt-6 max-w-md text-sm leading-relaxed text-ink/70">
+            {product.description}
+          </p>
+          <p className="mt-4 font-mono text-xs text-ink/50">Color: {product.color}</p>
+
+          <form onSubmit={handleAddToCart} className="mt-8 flex flex-col gap-6">
+            <SizeSelector
+              sizes={product.sizes}
+              value={size}
+              onChange={(s) => {
+                setSize(s)
+                setSizeError('')
+              }}
+              error={sizeError}
+            />
+            <QuantityInput value={quantity} onChange={setQuantity} />
+
+            <div className="flex flex-wrap gap-3">
+              <Button type="submit" $variant="primary" $size="lg">
+                Add to cart
+              </Button>
+              <Button
+                type="button"
+                $variant="secondary"
+                $size="lg"
+                onClick={() => {
+                  dispatch(toggleFavorite(product.id))
+                  showToast(
+                    isFavorite ? 'Removed from saved items' : 'Saved for later',
+                    { type: 'success' }
+                  )
+                }}
+              >
+                {isFavorite ? '♥ Saved' : '♡ Save'}
+              </Button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  )
+}
