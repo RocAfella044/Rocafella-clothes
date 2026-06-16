@@ -30,7 +30,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-10 border-t border-line pt-6 font-mono text-xs text-ink/40">
-          © {new Date().getFullYear()} Rocafella
+          © {new Date().getFullYear()} Rocafella. All Right Reserved.
         </div>
       </div>
     </footer>
