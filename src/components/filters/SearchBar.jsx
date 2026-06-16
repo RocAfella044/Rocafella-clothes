@@ -8,25 +8,9 @@ export function SearchBar({ initialValue = '' }) {
   const debounced = useDebounce(value, 350);
   const dispatch = useDispatch();
 
-  // Sync with initialValue if it changes from parent
-  useEffect(() => {
-    setValue(initialValue);
-  }, [initialValue]);
-
-  // Dispatch search when debounced value changes
   useEffect(() => {
     dispatch(setSearch(debounced));
   }, [debounced, dispatch]);
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      // Dispatch immediately on Enter
-      dispatch(setSearch(value));
-
-      // Clear the input after pressing Enter
-      setValue('');
-    }
-  };
 
   return (
     <div className="relative">
@@ -34,7 +18,6 @@ export function SearchBar({ initialValue = '' }) {
         type="search"
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        onKeyDown={handleKeyDown}
         placeholder="Search jackets, knitwear, color…"
         aria-label="Search products"
         className="w-full border border-line bg-transparent px-4 py-3 font-body text-sm placeholder:text-ink/40 focus:border-ink focus:outline-none"

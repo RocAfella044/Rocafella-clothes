@@ -19,8 +19,8 @@ const initialState = {
   filters: {
     category: 'All',
     search: '',
-    minPrice: null,
-    maxPrice: null,
+    // minPrice: null,
+    // maxPrice: null,
     sort: 'featured',
   },
 }
@@ -35,10 +35,10 @@ const productsSlice = createSlice({
     setSearch(state, action) {
       state.filters.search = action.payload
     },
-    setPriceRange(state, action) {
-      state.filters.minPrice = action.payload.min
-      state.filters.maxPrice = action.payload.max
-    },
+    // setPriceRange(state, action) {
+    //   state.filters.minPrice = action.payload.min
+    //   state.filters.maxPrice = action.payload.max
+    // },
     setSort(state, action) {
       state.filters.sort = action.payload
     },
@@ -63,7 +63,7 @@ const productsSlice = createSlice({
   },
 })
 
-export const { setCategory, setSearch, setPriceRange, setSort, resetFilters } =
+export const { setCategory, setSearch, setSort, resetFilters } =
   productsSlice.actions
 
 export default productsSlice.reducer
