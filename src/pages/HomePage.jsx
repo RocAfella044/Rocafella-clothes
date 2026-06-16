@@ -4,7 +4,6 @@ import { fetchProducts, resetFilters } from '../redux/slices/productsSlice'
 import { ProductGrid } from '../components/product/ProductGrid'
 import { SearchBar } from '../components/filters/SearchBar'
 import { CategoryFilter } from '../components/filters/CategoryFilter'
-import { PriceRangeFilter } from '../components/filters/PriceRangeFilter'
 import { SortSelect } from '../components/filters/SortSelect'
 import { Spinner, ErrorMessage, EmptyState } from '../components/common/Feedback'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
@@ -26,25 +25,23 @@ export function HomePage() {
           WEAR YOUR IDENTITY
         </h1>
         <p className="mt-4 text-ink/60">
-          APPAREL CRAFTED TO MATCH YOUR RHYTHM OF LIFE 
+          APPAREL CRAFTED TO MATCH YOUR RHYTHM OF LIFE
         </p>
       </div>
 
-      <div className="mb-8 grid gap-6 border border-line p-4 sm:p-6 lg:grid-cols-[2fr_3fr_1fr_1fr] lg:items-end">
+      <div className="mb-8 grid gap-6 border border-line p-4 sm:p-6 lg:grid-cols-[2fr_3fr_1fr] lg:items-end">
         <SearchBar initialValue={filters.search} />
         <CategoryFilter />
-        <PriceRangeFilter />
         <SortSelect />
       </div>
 
       <div className="mb-6 flex items-center justify-between">
         <p className="font-mono text-xs text-ink/50">
-          {status === 'succeeded' && `${items.length} item${items.length === 1 ? '' : 's'}`}
+          {status === 'succeeded' &&
+            `${items.length} item${items.length === 1 ? '' : 's'}`}
         </p>
         {(filters.category !== 'All' ||
           filters.search ||
-          filters.minPrice != null ||
-          filters.maxPrice != null ||
           filters.sort !== 'featured') && (
           <button
             onClick={() => dispatch(resetFilters())}
@@ -58,7 +55,10 @@ export function HomePage() {
       {status === 'loading' && <Spinner label="Loading collection" />}
 
       {status === 'failed' && (
-        <ErrorMessage message={error} onRetry={() => dispatch(fetchProducts(filters))} />
+        <ErrorMessage
+          message={error}
+          onRetry={() => dispatch(fetchProducts(filters))}
+        />
       )}
 
       {status === 'succeeded' && items.length === 0 && (
@@ -68,7 +68,9 @@ export function HomePage() {
         />
       )}
 
-      {status === 'succeeded' && items.length > 0 && <ProductGrid products={items} />}
+      {status === 'succeeded' && items.length > 0 && (
+        <ProductGrid products={items} />
+      )}
     </div>
-  )
+  );
 }
