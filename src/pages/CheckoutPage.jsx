@@ -103,7 +103,7 @@ export function CheckoutPage() {
           message="Add something to your cart before checking out."
           action={
             <Link to="/">
-              <Button $variant="primary">Browse the shop</Button>
+              <Button $variant="primary">want to shop again?</Button>
             </Link>
           }
         />

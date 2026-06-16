@@ -63,7 +63,7 @@ export function HomePage() {
 
       {status === 'succeeded' && items.length === 0 && (
         <EmptyState
-          title="Nothing here "
+          title="0 Results "
           message="Try a different search term or clear your filters."
         />
       )}

@@ -5,16 +5,10 @@ import { useFetchProduct } from '../hooks/useFetchProduct';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { Spinner, ErrorMessage } from '../components/common/Feedback';
 import { RatingStars } from '../components/product/RatingStars';
-import {
-  SizeSelector,
-  QuantityInput,
-} from '../components/product/ProductFormControls';
+import { SizeSelector, QuantityInput,} from '../components/product/ProductFormControls';
 import { Button } from '../components/common/Button';
 import { addToCart, selectCartItems } from '../redux/slices/cartSlice';
-import {
-  toggleFavorite,
-  selectIsFavorite,
-} from '../redux/slices/favoritesSlice';
+import { toggleFavorite, selectIsFavorite,} from '../redux/slices/favoritesSlice';
 import { useUI } from '../context/UIContext';
 
 export function ProductDetailPage() {
