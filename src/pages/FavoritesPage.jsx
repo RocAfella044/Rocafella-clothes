@@ -8,7 +8,7 @@ import { Button } from '../components/common/Button'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 
 export function FavoritesPage() {
-  useDocumentTitle('Saved')
+  useDocumentTitle('Favorites')
   const favoriteIds = useSelector(selectFavoriteIds)
   const favoriteProducts = products.filter((p) => favoriteIds.includes(p.id))
 
