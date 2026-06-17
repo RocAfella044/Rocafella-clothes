@@ -24,10 +24,10 @@ export function Header() {
             Shop
           </NavLink>
           <NavLink to="/favorites" className={navLinkClass}>
-            Favorite {favoriteCount > 0 && `(${favoriteCount})`}
+            Favorites {favoriteCount > 0 && `(${favoriteCount})`}
           </NavLink>
           <NavLink to="/orders" className={navLinkClass}>
-            Order
+            Orders
           </NavLink>
         </nav>
 
