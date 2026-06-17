@@ -16,7 +16,7 @@ export function SortSelect() {
   return (
     <div>
       <label htmlFor="sort" className="eyebrow mb-2 block">
-        Sort by
+        Sort 
       </label>
       <select
         id="sort"
