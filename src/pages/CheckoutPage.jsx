@@ -230,7 +230,7 @@ export function CheckoutPage() {
           {status === 'failed' && <ErrorMessage message={error} />}
 
           <Button type="submit" $variant="primary" $size="lg" disabled={status === 'loading'}>
-            {status === 'loading' ? 'Placing order…' : `Place order — $${total.toFixed(2)}`}
+            {status === 'loading' ? 'Placing order…' : `Place order — NPR ${total.toFixed(2)}`}
           </Button>
         </form>
 
