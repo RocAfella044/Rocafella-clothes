@@ -71,7 +71,7 @@ export function OrderDetailPage() {
           </div>
           <div className="border border-line p-6">
             <div className="flex justify-between font-display text-lg">
-              <span>Total</span>
+              <span>Total price </span>
               <span className="font-mono">NPR {order.total.toFixed(2)}</span>
             </div>
           </div>
