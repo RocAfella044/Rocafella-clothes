@@ -20,7 +20,7 @@ export function HomePage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-10 max-w-2xl">
-        <p className="eyebrow mb-3">Spring Collection</p>
+        <p className="eyebrow mb-3">Collection</p>
         <h1 className="font-display text-4xl leading-tight sm:text-5xl">
           WEAR YOUR IDENTITY
         </h1>
