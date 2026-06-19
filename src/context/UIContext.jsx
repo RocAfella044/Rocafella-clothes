@@ -10,10 +10,10 @@ export function UIProvider({ children }) {
   const timers = useRef({})
 
   const dismissToast = useCallback((id) => {
-    setToasts((current) => current.filter((t) => t.id !== id))
+    setToasts((current) => current.filter((t) => t.id !== id)); //creates a new array excluding the dismissed toast
     if (timers.current[id]) {
-      clearTimeout(timers.current[id])
-      delete timers.current[id]
+      clearTimeout(timers.current[id]);
+      delete timers.current[id];
     }
   }, [])
 

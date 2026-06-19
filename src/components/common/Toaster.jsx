@@ -27,7 +27,7 @@ export function Toaster() {
             aria-label="Dismiss notification"
             className="opacity-70 hover:opacity-100 transition-opacity"
           >
-            ✕
+            =
           </button>
         </div>
       ))}
