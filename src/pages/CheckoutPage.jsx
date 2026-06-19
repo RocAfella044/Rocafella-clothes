@@ -195,7 +195,7 @@ export function CheckoutPage() {
             </div>
             <div>
               <label htmlFor="postcode" className="mb-1 block text-xs text-ink/60">
-                Postal code
+                Post-code
               </label>
               <input
                 id="postcode"

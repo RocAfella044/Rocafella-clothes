@@ -12,7 +12,7 @@ export function NotFoundPage() {
         The page you&rsquo;re looking for doesn&rsquo;t exist, or has been moved.
       </p>
       <Link to="/" className="mt-6">
-        <Button $variant="primary">Back to shop</Button>
+        <Button $variant="primary">Back to shop </Button>
       </Link>
     </div>
   )
