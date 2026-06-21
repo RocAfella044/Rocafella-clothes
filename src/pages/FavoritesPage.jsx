@@ -23,7 +23,7 @@ export function FavoritesPage() {
           message="Tap the heart on any product to save it for later."
           action={
             <Link to="/">
-              <Button $variant="primary">Lets shop</Button>
+              <Button $variant="primary">Lets go to shop</Button>
             </Link>
           }
         />
