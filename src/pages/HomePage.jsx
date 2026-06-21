@@ -22,10 +22,10 @@ export function HomePage() {
       <div className="mb-10 max-w-2xl">
         <p className="eyebrow mb-3">Spring Collection</p>
         <h1 className="font-display text-4xl leading-tight sm:text-5xl">
-          WEAR YOUR IDENTITY
+          WEAR YOUR IDENTITY.
         </h1>
         <p className="mt-4 text-ink/60">
-          APPAREL CRAFTED TO MATCH YOUR RHYTHM OF LIFE
+          APPAREL CRAFTED TO MATCH YOUR RHYTHM OF LIFE.
         </p>
       </div>
 
