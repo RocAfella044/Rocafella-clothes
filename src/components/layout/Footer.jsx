@@ -76,7 +76,7 @@ export function Footer() {
 
 
         <div className="mt-12 border-t border-line pt-6 text-xs text-ink/40 font-mono">
-          @ {new Date().getFullYear()} Rocafella. All Rights Reserved.
+          © {new Date().getFullYear()} Rocafella. All Rights Reserved.
         </div>
       </div>
     </footer>
