@@ -14,7 +14,7 @@ export function FavoritesPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <h1 className="font-display text-3xl sm:text-4xl">You Preferred</h1>
+      <h1 className="font-display text-3xl sm:text-4xl">Your Preferrence</h1>
       <p className="mt-2 text-ink/60">Pieces you&rsquo;re keeping an eye on.</p>
 
       {favoriteProducts.length === 0 ? (
