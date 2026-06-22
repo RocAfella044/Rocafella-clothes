@@ -249,7 +249,7 @@ export function CheckoutPage() {
             </ul>
             <div className="mt-4 flex justify-between border-t border-line pt-4 font-display text-lg">
               <span>Total</span>
-              <span className="font-mono">NP {total.toFixed(2)}</span>
+              <span className="font-mono">NPR {total.toFixed(2)}</span>
             </div>
           </div>
         </div>
