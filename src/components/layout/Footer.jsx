@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="border-t border-line">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-10 md:flex-row md:justify-between">
-          {/* Brand */}
+          
           <div className="md:max-w-xs">
             <p className="font-display text-lg font-semibold">Rocafella</p>
             <p className="mt-2 text-sm text-ink/60">
@@ -14,9 +14,10 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Navigation Links - 3 Equal Columns */}
+
           <div className="grid grid-cols-2 gap-x-12 gap-y-10 sm:grid-cols-3 md:gap-x-16">
-            {/* Shop */}
+
+
             <div>
               <p className="eyebrow mb-3">Shop</p>
               <ul className="space-y-2 text-sm text-ink/70">
@@ -26,7 +27,6 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Help */}
             <div>
               <p className="eyebrow mb-3">Help</p>
               <ul className="space-y-2 text-sm text-ink/70">
@@ -36,7 +36,7 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Social */}
+
             <div>
               <p className="eyebrow mb-3">Social</p>
               <div className="flex items-center gap-6">
