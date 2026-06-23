@@ -20,7 +20,7 @@ export function OrderDetailPage() {
           message="We couldn't find that order."
           action={
             <Link to="/orders">
-              <Button $variant="primary">View order history</Button>
+              <Button $variant="primary">View the order history</Button>
             </Link>
           }
         />
