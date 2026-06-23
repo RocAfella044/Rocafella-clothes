@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react'
 import { fetchProductById } from '../services/api'
 
-/**
- * Loads a single product by id and exposes loading/error state.
- * Cancels stale updates if the id changes or the component unmounts
- * before the request resolves.
- */
 export function useFetchProduct(id) {
   const [product, setProduct] = useState(null)
   const [status, setStatus] = useState('idle') // idle | loading | succeeded | failed
