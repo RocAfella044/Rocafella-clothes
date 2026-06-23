@@ -30,7 +30,7 @@ export function OrderDetailPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <p className="eyebrow text-moss">Order been confirmed</p>
+      <p className="eyebrow text-moss">Order confirmed</p>
       <h1 className="mt-2 font-display text-3xl sm:text-4xl">Thank you, {order.customer.fullName.split(' ')[0]}.</h1>
       <p className="mt-3 text-ink/60">
         Your order <span className="font-mono">{order.id}</span> was placed on{' '}
