@@ -101,7 +101,7 @@ export const products = [
     price: 5999,
     color: 'Charcoal',
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
-    rating: 4.5,
+    rating: 4.6,
     isNew: false,
     description:
       'A fine-ribbed turtleneck in a wool-cotton blend, cut close to the body for easy layering.',
@@ -127,7 +127,7 @@ export const products = [
     price: 3999,
     color: 'Blue Raw',
     sizes: ['S', 'M', 'L', 'XL'],
-    rating: 4.7,
+    rating: 4.4,
     isNew: false,
     description:
       'Straight-leg jeans cut from Japanese selvedge denim, garment-washed once for a broken-in feel from day one.',
@@ -140,7 +140,7 @@ export const products = [
     price: 4880,
     color: 'Sage',
     sizes: ['XS', 'S', 'M', 'L'],
-    rating: 4.6,
+    rating: 4.8,
     isNew: true,
     description:
       'A relaxed wrap dress in washed linen with a self-tie belt and side pockets. Easy to dress for warm weather.',
