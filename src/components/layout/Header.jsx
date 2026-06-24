@@ -81,7 +81,7 @@ export function Header() {
           </NavLink>
 
           <NavLink to="/favorites" className={navLinkClass}>
-            Saved{' '}
+            Favorites{' '}
             {favoriteCount > 0 && (
               <span className="ml-1 text-moss">({favoriteCount})</span>
             )}

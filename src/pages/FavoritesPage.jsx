@@ -29,55 +29,18 @@ export function FavoritesPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-      <div className="flex items-end justify-between gap-4 border-b border-line pb-6">
-        <div>
-          <p className="eyebrow mb-1">Account</p>
-          <h1 className="font-display text-3xl sm:text-4xl">Saved Items</h1>
-        </div>
-        <div className="flex items-center gap-4 mb-1">
-          {products.length > 0 && (
-            <p className="font-mono text-sm text-ink/50">
-              {products.length} piece{products.length !== 1 ? 's' : ''}
-            </p>
-          )}
-          <Link
-            to="/"
-            className="font-mono text-xs uppercase tracking-widest2 text-ink/50 hover:text-ink transition-colors"
-          >
-            Shop →
-          </Link>
-        </div>
-      </div>
-
+      <h1 className="font-display text-3xl sm:text-4xl">Saved</h1>
+      <p className="mt-2 text-ink/60">Pieces you&rsquo;re keeping an eye on.</p>
       {products.length === 0 ? (
-        <div className="mt-12">
-          <EmptyState
-            title="Nothing saved yet"
-            message="Tap the heart on any product to save it here for later."
-            action={
-              <Link to="/">
-                <Button $variant="primary">Browse the shop</Button>
-              </Link>
-            }
-          />
-          {/* Suggestion row */}
-          <div className="mt-8 grid gap-3 sm:grid-cols-2 max-w-xl mx-auto">
-            <Link
-              to="/orders"
-              className="flex items-center justify-between border border-line px-4 py-4 hover:border-ink hover:bg-sand transition-colors"
-            >
-              <span className="text-sm">View order history</span>
-              <span className="text-ink/30">→</span>
+        <EmptyState
+          title="Nothing saved yet"
+          message="Tap the heart on any product to save it for later."
+          action={
+            <Link to="/">
+              <Button $variant="primary">Browse the shop</Button>
             </Link>
-            <Link
-              to="/cart"
-              className="flex items-center justify-between border border-line px-4 py-4 hover:border-ink hover:bg-sand transition-colors"
-            >
-              <span className="text-sm">Go to cart</span>
-              <span className="text-ink/30">→</span>
-            </Link>
-          </div>
-        </div>
+          }
+        />
       ) : (
         <div className="mt-8">
           <ProductGrid products={products} />
