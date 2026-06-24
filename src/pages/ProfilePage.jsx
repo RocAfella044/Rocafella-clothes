@@ -91,9 +91,7 @@ export function ProfilePage() {
             {profile?.role || 'user'}
           </span>
         </div>
-        <Button $variant="danger" $size="sm" onClick={handleSignOut}>
-          Sign out
-        </Button>
+       
       </div>
 
       {/* Stats row */}
