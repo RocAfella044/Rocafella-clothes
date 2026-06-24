@@ -13,15 +13,13 @@ export function SearchBar({ initialValue = '' }) {
   }, [debounced, dispatch]);
 
   return (
-    <div className="relative">
-      <input
-        type="search"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        placeholder="Search jackets, knitwear, color…"
-        aria-label="Search products"
-        className="w-full border border-line bg-transparent px-4 py-3 font-body text-sm placeholder:text-ink/40 focus:border-ink focus:outline-none"
-      />
-    </div>
+    <input
+      type="search"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      placeholder="Search jackets, knitwear, color…"
+      aria-label="Search products"
+      className="w-full border border-line bg-transparent px-4 py-3 font-body text-sm placeholder:text-ink/40 focus:border-ink focus:outline-none"
+    />
   );
 }

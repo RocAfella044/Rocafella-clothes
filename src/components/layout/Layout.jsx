@@ -1,7 +1,7 @@
-import { Outlet } from 'react-router-dom'
-import { Header } from './Header'
-import { Footer } from './Footer'
-import { Toaster } from '../common/Toaster'
+import { Outlet } from 'react-router-dom';
+import { Header } from './Header';
+import { Footer } from './Footer';
+import { Toaster } from '../common/Toaster';
 
 export function Layout() {
   return (
@@ -13,5 +13,5 @@ export function Layout() {
       <Footer />
       <Toaster />
     </div>
-  )
+  );
 }

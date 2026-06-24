@@ -1,26 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const STORAGE_KEY = 'Rocafella_cart'
+const getStorageKey = (userId) => `threadline_cart_${userId}`
+const GUEST_KEY = 'threadline_cart_guest'
 
-const loadCart = () => {
+const loadCartFromStorage = (userId) => {
   try {
-    const raw = localStorage.getItem(STORAGE_KEY)
+    const key = userId ? getStorageKey(userId) : GUEST_KEY
+    const raw = localStorage.getItem(key)
     return raw ? JSON.parse(raw) : []
-  } catch {
-    return []
-  }
+  } catch { return [] }
 }
 
-const persist = (items) => {
+const persistCart = (items, userId) => {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items))
-  } catch {
-    // ignore storage errors (e.g. private browsing)
-  }
-}
-
-const initialState = {
-  items: loadCart(), // { id, name, price, image, size, quantity }
+    const key = userId ? getStorageKey(userId) : GUEST_KEY
+    localStorage.setItem(key, JSON.stringify(items))
+  } catch {}
 }
 
 const findLineIndex = (items, id, size) =>
@@ -28,8 +23,22 @@ const findLineIndex = (items, id, size) =>
 
 const cartSlice = createSlice({
   name: 'cart',
-  initialState,
+  initialState: {
+    items: loadCartFromStorage(null), // load guest cart on startup
+    userId: null,
+  },
   reducers: {
+    // Called on sign in — loads that user's saved cart
+    initCart(state, action) {
+      const userId = action.payload
+      state.userId = userId
+      state.items = loadCartFromStorage(userId)
+    },
+    // Called on sign out — clears cart from state
+    resetCart(state) {
+      state.items = []
+      state.userId = null
+    },
     addToCart(state, action) {
       const { id, name, price, image, size, quantity = 1 } = action.payload
       const idx = findLineIndex(state.items, id, size)
@@ -38,29 +47,36 @@ const cartSlice = createSlice({
       } else {
         state.items.push({ id, name, price, image, size, quantity })
       }
-      persist(state.items)
+      persistCart(state.items, state.userId)
     },
     removeFromCart(state, action) {
       const { id, size } = action.payload
-      state.items = state.items.filter((item) => !(item.id === id && item.size === size))
-      persist(state.items)
+      state.items = state.items.filter(
+        (item) => !(item.id === id && item.size === size)
+      )
+      persistCart(state.items, state.userId)
     },
     updateQuantity(state, action) {
       const { id, size, quantity } = action.payload
       const idx = findLineIndex(state.items, id, size)
-      if (idx >= 0) {
-        state.items[idx].quantity = Math.max(1, quantity)
-      }
-      persist(state.items)
+      if (idx >= 0) state.items[idx].quantity = Math.max(1, quantity)
+      persistCart(state.items, state.userId)
     },
     clearCart(state) {
       state.items = []
-      persist(state.items)
+      persistCart(state.items, state.userId)
     },
   },
 })
 
-export const { addToCart, removeFromCart, updateQuantity, clearCart } = cartSlice.actions
+export const {
+  initCart,
+  resetCart,
+  addToCart,
+  removeFromCart,
+  updateQuantity,
+  clearCart,
+} = cartSlice.actions
 
 export const selectCartItems = (state) => state.cart.items
 export const selectCartCount = (state) =>

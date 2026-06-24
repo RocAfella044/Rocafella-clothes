@@ -5,10 +5,17 @@ import { useFetchProduct } from '../hooks/useFetchProduct';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { Spinner, ErrorMessage } from '../components/common/Feedback';
 import { RatingStars } from '../components/product/RatingStars';
-import { SizeSelector, QuantityInput,} from '../components/product/ProductFormControls';
+import {
+  SizeSelector,
+  QuantityInput,
+} from '../components/product/ProductFormControls';
 import { Button } from '../components/common/Button';
 import { addToCart, selectCartItems } from '../redux/slices/cartSlice';
-import { toggleFavorite, selectIsFavorite,} from '../redux/slices/favoritesSlice';
+import {
+  toggleFavoriteAsync,
+  selectIsFavorite,
+} from '../redux/slices/favoritesSlice';
+import { useAuth } from '../context/AuthContext';
 import { useUI } from '../context/UIContext';
 
 export function ProductDetailPage() {
@@ -16,6 +23,7 @@ export function ProductDetailPage() {
   const { product, status, error } = useFetchProduct(id);
   const dispatch = useDispatch();
   const { showToast } = useUI();
+  const { user, isAuthenticated } = useAuth();
   const isFavorite = useSelector(selectIsFavorite(id));
   const cartItems = useSelector(selectCartItems);
 
@@ -25,7 +33,6 @@ export function ProductDetailPage() {
 
   useDocumentTitle(product?.name);
 
-  // Auto-restore size & quantity if this product is already in the cart
   useEffect(() => {
     if (product) {
       const existingItem = cartItems.find((item) => item.id === product.id);
@@ -37,7 +44,7 @@ export function ProductDetailPage() {
   }, [product]);
 
   if (status === 'loading') return <Spinner label="Loading product" />;
-  if (status === 'failed') {
+  if (status === 'failed')
     return (
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <ErrorMessage message={error} />
@@ -51,10 +58,8 @@ export function ProductDetailPage() {
         </div>
       </div>
     );
-  }
   if (!product) return null;
 
-  // True if this exact product + size combo is already in the cart
   const alreadyInCart = size
     ? cartItems.some((item) => item.id === product.id && item.size === size)
     : false;
@@ -79,6 +84,23 @@ export function ProductDetailPage() {
     showToast(`Added ${product.name} (${size}) to cart`, { type: 'success' });
   };
 
+  const handleToggleFavorite = () => {
+    if (!isAuthenticated) {
+      showToast('Sign in to save items', { type: 'info' });
+      return;
+    }
+    dispatch(
+      toggleFavoriteAsync({
+        userId: user.id,
+        productId: product.id,
+        isFavorite,
+      }),
+    );
+    showToast(isFavorite ? 'Removed from saved items' : 'Saved for later', {
+      type: 'success',
+    });
+  };
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <Link
@@ -87,7 +109,6 @@ export function ProductDetailPage() {
       >
         ← Back to shop
       </Link>
-
       <div className="mt-6 grid gap-10 lg:grid-cols-2">
         <div className="aspect-[4/5] overflow-hidden bg-sand">
           <img
@@ -96,7 +117,6 @@ export function ProductDetailPage() {
             className="h-full w-full object-cover"
           />
         </div>
-
         <div>
           <p className="eyebrow">{product.category}</p>
           <h1 className="mt-2 font-display text-3xl sm:text-4xl">
@@ -105,17 +125,16 @@ export function ProductDetailPage() {
           <div className="mt-3">
             <RatingStars rating={product.rating} />
           </div>
-          <p className="mt-4 font-mono text-xl">NPR {product.price}</p>
+          <p className="mt-4 font-mono text-xl">${product.price}</p>
           <p className="mt-6 max-w-md text-sm leading-relaxed text-ink/70">
             {product.description}
           </p>
           <p className="mt-4 font-mono text-xs text-ink/50">
             Color: {product.color}
           </p>
-
           <form onSubmit={handleAddToCart} className="mt-8 flex flex-col gap-6">
             <SizeSelector
-              sizes={product.sizes}
+              sizes={product.sizes || []}
               value={size}
               onChange={(s) => {
                 setSize(s);
@@ -123,12 +142,9 @@ export function ProductDetailPage() {
               }}
               error={sizeError}
             />
-
-            {/* Only show quantity selector when not already in cart */}
             {!alreadyInCart && (
               <QuantityInput value={quantity} onChange={setQuantity} />
             )}
-
             <div className="flex flex-wrap gap-3">
               {alreadyInCart ? (
                 <div className="flex flex-wrap items-center gap-3">
@@ -149,18 +165,11 @@ export function ProductDetailPage() {
                   Add to cart
                 </Button>
               )}
-
               <Button
                 type="button"
                 $variant="secondary"
                 $size="lg"
-                onClick={() => {
-                  dispatch(toggleFavorite(product.id));
-                  showToast(
-                    isFavorite ? 'Removed from saved items' : 'Saved for later',
-                    { type: 'success' },
-                  );
-                }}
+                onClick={handleToggleFavorite}
               >
                 {isFavorite ? '♥ Saved' : '♡ Save'}
               </Button>

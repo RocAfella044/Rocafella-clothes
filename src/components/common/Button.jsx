@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 const variants = {
   primary: css`
@@ -35,7 +35,7 @@ const variants = {
       color: #f3efe7;
     }
   `,
-}
+};
 
 const sizes = {
   sm: css`
@@ -50,7 +50,7 @@ const sizes = {
     padding: 0.85rem 2rem;
     font-size: 0.85rem;
   `,
-}
+};
 
 export const Button = styled.button`
   font-family: 'IBM Plex Mono', monospace;
@@ -59,14 +59,15 @@ export const Button = styled.button`
   font-weight: 500;
   border-radius: 2px;
   cursor: pointer;
-  transition: background-color 160ms ease, color 160ms ease, opacity 160ms ease;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    opacity 160ms ease;
   white-space: nowrap;
-
   ${(props) => sizes[props.$size || 'md']}
   ${(props) => variants[props.$variant || 'primary']}
-
   &:disabled {
     opacity: 0.45;
     cursor: not-allowed;
   }
-`
+`;

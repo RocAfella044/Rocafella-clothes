@@ -1,21 +1,27 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchProducts, resetFilters } from '../redux/slices/productsSlice'
-import { ProductGrid } from '../components/product/ProductGrid'
-import { SearchBar } from '../components/filters/SearchBar'
-import { CategoryFilter } from '../components/filters/CategoryFilter'
-import { SortSelect } from '../components/filters/SortSelect'
-import { Spinner, ErrorMessage, EmptyState } from '../components/common/Feedback'
-import { useDocumentTitle } from '../hooks/useDocumentTitle'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts, resetFilters } from '../redux/slices/productsSlice';
+import { ProductGrid } from '../components/product/ProductGrid';
+import { SearchBar } from '../components/filters/SearchBar';
+import { CategoryFilter } from '../components/filters/CategoryFilter';
+import { SortSelect } from '../components/filters/SortSelect';
+import {
+  Spinner,
+  ErrorMessage,
+  EmptyState,
+} from '../components/common/Feedback';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export function HomePage() {
-  useDocumentTitle('Shop')
-  const dispatch = useDispatch()
-  const { items, status, error, filters } = useSelector((state) => state.products)
+  useDocumentTitle('Shop');
+  const dispatch = useDispatch();
+  const { items, status, error, filters } = useSelector(
+    (state) => state.products,
+  );
 
   useEffect(() => {
-    dispatch(fetchProducts(filters))
-  }, [dispatch, filters])
+    dispatch(fetchProducts(filters));
+  }, [dispatch, filters]);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -53,21 +59,18 @@ export function HomePage() {
       </div>
 
       {status === 'loading' && <Spinner label="Loading collection" />}
-
       {status === 'failed' && (
         <ErrorMessage
           message={error}
           onRetry={() => dispatch(fetchProducts(filters))}
         />
       )}
-
       {status === 'succeeded' && items.length === 0 && (
         <EmptyState
-          title="0 Results "
+          title="Nothing here yet"
           message="Try a different search term or clear your filters."
         />
       )}
-
       {status === 'succeeded' && items.length > 0 && (
         <ProductGrid products={items} />
       )}

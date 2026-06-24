@@ -5,7 +5,6 @@ export function Footer() {
     <footer className="border-t border-line">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-10 md:flex-row md:justify-between">
-          
           <div className="md:max-w-xs">
             <p className="font-display text-lg font-semibold">Rocafella</p>
             <p className="mt-2 text-sm text-ink/60">
@@ -14,10 +13,7 @@ export function Footer() {
             </p>
           </div>
 
-
           <div className="grid grid-cols-2 gap-x-12 gap-y-10 sm:grid-cols-3 md:gap-x-16">
-
-
             <div>
               <p className="eyebrow mb-3">Shop</p>
               <ul className="space-y-2 text-sm text-ink/70">
@@ -35,7 +31,6 @@ export function Footer() {
                 <li>Size guide</li>
               </ul>
             </div>
-
 
             <div>
               <p className="eyebrow mb-3">Social</p>
@@ -73,7 +68,6 @@ export function Footer() {
             </div>
           </div>
         </div>
-
 
         <div className="mt-12 border-t border-line pt-6 text-xs text-ink/40 font-mono">
           © {new Date().getFullYear()} Rocafella. All Rights Reserved.

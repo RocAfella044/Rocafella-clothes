@@ -2,7 +2,11 @@ export function SizeSelector({ sizes, value, onChange, error }) {
   return (
     <div>
       <p className="eyebrow mb-2">Size</p>
-      <div className="flex flex-wrap gap-2" role="radiogroup" aria-label="Select size">
+      <div
+        className="flex flex-wrap gap-2"
+        role="radiogroup"
+        aria-label="Select size"
+      >
         {sizes.map((size) => (
           <button
             key={size}
@@ -22,12 +26,11 @@ export function SizeSelector({ sizes, value, onChange, error }) {
       </div>
       {error && <p className="mt-2 text-xs text-clay">{error}</p>}
     </div>
-  )
+  );
 }
 
 export function QuantityInput({ value, onChange, min = 1, max = 9 }) {
-  const clamp = (n) => Math.min(max, Math.max(min, n))
-
+  const clamp = (n) => Math.min(max, Math.max(min, n));
   return (
     <div>
       <p className="eyebrow mb-2">Quantity</p>
@@ -47,8 +50,8 @@ export function QuantityInput({ value, onChange, min = 1, max = 9 }) {
           min={min}
           max={max}
           onChange={(e) => {
-            const n = parseInt(e.target.value, 10)
-            onChange(Number.isNaN(n) ? min : clamp(n))
+            const n = parseInt(e.target.value, 10);
+            onChange(Number.isNaN(n) ? min : clamp(n));
           }}
           className="w-12 border-x border-line bg-transparent py-2 text-center font-mono text-sm focus:outline-none"
         />
@@ -62,5 +65,5 @@ export function QuantityInput({ value, onChange, min = 1, max = 9 }) {
         </button>
       </div>
     </div>
-  )
+  );
 }

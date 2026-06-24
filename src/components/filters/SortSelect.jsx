@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from 'react-redux'
-import { setSort } from '../../redux/slices/productsSlice'
+import { useDispatch, useSelector } from 'react-redux';
+import { setSort } from '../../redux/slices/productsSlice';
 
 const SORT_OPTIONS = [
   { value: 'featured', label: 'Featured' },
@@ -7,16 +7,16 @@ const SORT_OPTIONS = [
   { value: 'price-asc', label: 'Price: Low to High' },
   { value: 'price-desc', label: 'Price: High to Low' },
   { value: 'rating', label: 'Top Rated' },
-]
+];
 
 export function SortSelect() {
-  const dispatch = useDispatch()
-  const sort = useSelector((state) => state.products.filters.sort)
+  const dispatch = useDispatch();
+  const sort = useSelector((state) => state.products.filters.sort);
 
   return (
     <div>
       <label htmlFor="sort" className="eyebrow mb-2 block">
-        Sorts
+        Sort by
       </label>
       <select
         id="sort"
@@ -31,5 +31,5 @@ export function SortSelect() {
         ))}
       </select>
     </div>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import { ProductCard } from './ProductCard'
+import { ProductCard } from './ProductCard';
 
 export function ProductGrid({ products }) {
   return (
@@ -7,5 +7,5 @@ export function ProductGrid({ products }) {
         <ProductCard key={product.id} product={product} />
       ))}
     </div>
-  )
+  );
 }

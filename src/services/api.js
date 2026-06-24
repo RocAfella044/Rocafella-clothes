@@ -49,12 +49,12 @@ export const fetchProducts = async (params = {}) => {
     )
   }
 
-  // if (params.minPrice != null) {
-  //   results = results.filter((p) => p.price >= params.minPrice)
-  // }
-  // if (params.maxPrice != null) {
-  //   results = results.filter((p) => p.price <= params.maxPrice)
-  // }
+  if (params.minPrice != null) {
+    results = results.filter((p) => p.price >= params.minPrice)
+  }
+  if (params.maxPrice != null) {
+    results = results.filter((p) => p.price <= params.maxPrice)
+  }
 
   if (params.sort === 'price-asc') results.sort((a, b) => a.price - b.price)
   if (params.sort === 'price-desc') results.sort((a, b) => b.price - a.price)

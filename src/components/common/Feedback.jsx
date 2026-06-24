@@ -7,7 +7,7 @@ export function Spinner({ label = 'Loading' }) {
       </div>
       <p className="eyebrow">{label}</p>
     </div>
-  )
+  );
 }
 
 export function ErrorMessage({ message, onRetry }) {
@@ -24,7 +24,7 @@ export function ErrorMessage({ message, onRetry }) {
         </button>
       )}
     </div>
-  )
+  );
 }
 
 export function EmptyState({ title, message, action }) {
@@ -34,5 +34,5 @@ export function EmptyState({ title, message, action }) {
       {message && <p className="max-w-sm text-sm text-ink/60">{message}</p>}
       {action}
     </div>
-  )
+  );
 }

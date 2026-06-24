@@ -1,51 +1,54 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { fetchFavorites, addFavorite, removeFavorite } from '../../supabase/userdata'
 
-const STORAGE_KEY = 'Rocafella_favorites'
-
-const loadFavorites = () => {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    return raw ? JSON.parse(raw) : []
-  } catch {
-    return []
+export const loadFavorites = createAsyncThunk(
+  'favorites/load',
+  async (userId, { rejectWithValue }) => {
+    try { return await fetchFavorites(userId) }
+    catch (err) { return rejectWithValue(err.message) }
   }
-}
+)
 
-const persist = (ids) => {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(ids))
-  } catch {
-    // ignore
+export const toggleFavoriteAsync = createAsyncThunk(
+  'favorites/toggle',
+  async ({ userId, productId, isFavorite }, { rejectWithValue }) => {
+    try {
+      if (isFavorite) await removeFavorite(userId, productId)
+      else await addFavorite(userId, productId)
+      return { productId, isFavorite }
+    } catch (err) {
+      return rejectWithValue(err.message)
+    }
   }
-}
-
-const initialState = {
-  ids: loadFavorites(), // array of product ids
-}
+)
 
 const favoritesSlice = createSlice({
   name: 'favorites',
-  initialState,
+  initialState: { ids: [], status: 'idle' },
   reducers: {
-    toggleFavorite(state, action) {
-      const id = action.payload
-      if (state.ids.includes(id)) {
-        state.ids = state.ids.filter((favId) => favId !== id)
-      } else {
-        state.ids.push(id)
-      }
-      persist(state.ids)
-    },
-    clearFavorites(state) {
-      state.ids = []
-      persist(state.ids)
-    },
+    clearFavorites(state) { state.ids = []; state.status = 'idle' },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loadFavorites.pending, (state) => { state.status = 'loading' })
+      .addCase(loadFavorites.fulfilled, (state, action) => { state.ids = action.payload; state.status = 'succeeded' })
+      .addCase(loadFavorites.rejected, (state) => { state.status = 'failed' })
+      // Optimistic toggle
+      .addCase(toggleFavoriteAsync.pending, (state, action) => {
+        const { productId, isFavorite } = action.meta.arg
+        if (isFavorite) state.ids = state.ids.filter((id) => id !== productId)
+        else state.ids.push(productId)
+      })
+      // Roll back on failure
+      .addCase(toggleFavoriteAsync.rejected, (state, action) => {
+        const { productId, isFavorite } = action.meta.arg
+        if (isFavorite) state.ids.push(productId)
+        else state.ids = state.ids.filter((id) => id !== productId)
+      })
   },
 })
 
-export const { toggleFavorite, clearFavorites } = favoritesSlice.actions
-
+export const { clearFavorites } = favoritesSlice.actions
 export const selectFavoriteIds = (state) => state.favorites.ids
 export const selectIsFavorite = (id) => (state) => state.favorites.ids.includes(id)
-
 export default favoritesSlice.reducer
