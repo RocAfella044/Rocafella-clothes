@@ -71,7 +71,7 @@ export function Header() {
           className="font-display text-xl font-semibold tracking-tight"
           onClick={closeMobileNav}
         >
-          Threadline
+          Rocafella
         </Link>
 
         {/* Desktop Navigation */}
