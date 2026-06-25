@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { selectCartItems } from '../redux/slices/cartSlice'
-import { CartLineItem } from '../components/cart/CartLineItem'
-import { CartSummary } from '../components/cart/CartSummary'
-import { EmptyState } from '../components/common/Feedback'
-import { Button } from '../components/common/Button'
-import { useDocumentTitle } from '../hooks/useDocumentTitle'
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectCartItems } from '../redux/slices/cartSlice';
+import { CartLineItem } from '../components/cart/CartLineItem';
+import { CartSummary } from '../components/cart/CartSummary';
+import { EmptyState } from '../components/common/Feedback';
+import { Button } from '../components/common/Button';
+import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 // Group cart items by product id so same product with different
 // sizes appears as one card with multiple size rows underneath
 function groupByProduct(items) {
-  const map = new Map()
+  const map = new Map();
   items.forEach((item) => {
     if (!map.has(item.id)) {
       map.set(item.id, {
@@ -20,32 +20,25 @@ function groupByProduct(items) {
         price: item.price,
         category: item.category,
         sizes: [],
-      })
+      });
     }
     map.get(item.id).sizes.push({
       id: item.id,
       size: item.size,
       quantity: item.quantity,
       price: item.price,
-    })
-  })
-  return Array.from(map.values())
+    });
+  });
+  return Array.from(map.values());
 }
 
-const suggestedLinks = [
-  { to: '/', label: 'Continue shopping', icon: '→' },
-  { to: '/favorites', label: 'View saved items', icon: '♡' },
-  { to: '/orders', label: 'Order history', icon: '📦' },
-]
-
 export function CartPage() {
-  useDocumentTitle('Cart')
-  const items = useSelector(selectCartItems)
-  const grouped = groupByProduct(items)
+  useDocumentTitle('Cart');
+  const items = useSelector(selectCartItems);
+  const grouped = groupByProduct(items);
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
-
       <div className="flex items-end justify-between gap-4 border-b border-line pb-6">
         <div>
           <p className="eyebrow mb-1">Shopping</p>
@@ -53,7 +46,8 @@ export function CartPage() {
         </div>
         {items.length > 0 && (
           <p className="font-mono text-sm text-ink/50 mb-1">
-            {items.reduce((s, i) => s + i.quantity, 0)} item{items.reduce((s, i) => s + i.quantity, 0) !== 1 ? 's' : ''}
+            {items.reduce((s, i) => s + i.quantity, 0)} item
+            {items.reduce((s, i) => s + i.quantity, 0) !== 1 ? 's' : ''}
           </p>
         )}
       </div>
@@ -63,19 +57,12 @@ export function CartPage() {
           <EmptyState
             title="Your cart is empty"
             message="Pieces you add will appear here, ready when you are."
-          />
-          <div className="mt-8 grid gap-3 sm:grid-cols-3 max-w-2xl mx-auto">
-            {suggestedLinks.map(({ to, label, icon }) => (
-              <Link
-                key={to}
-                to={to}
-                className="flex items-center justify-between border border-line px-4 py-4 hover:border-ink hover:bg-sand transition-colors"
-              >
-                <span className="text-sm">{label}</span>
-                <span className="text-ink/30">{icon}</span>
+            action={
+              <Link to="/">
+                <Button $variant="primary">Continue shopping</Button>
               </Link>
-            ))}
-          </div>
+            }
+          />
         </div>
       ) : (
         <div className="mt-8 grid gap-10 lg:grid-cols-[2fr_1fr]">
@@ -89,16 +76,8 @@ export function CartPage() {
             ))}
 
             <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-line pt-6">
-              <Link to="/" className="font-mono text-xs uppercase tracking-widest2 text-ink/50 hover:text-ink transition-colors">
-                ← Continue shopping
-              </Link>
-              <span className="text-line">·</span>
-              <Link to="/favorites" className="font-mono text-xs uppercase tracking-widest2 text-ink/50 hover:text-ink transition-colors">
-                ♡ Saved items
-              </Link>
-              <span className="text-line">·</span>
-              <Link to="/orders" className="font-mono text-xs uppercase tracking-widest2 text-ink/50 hover:text-ink transition-colors">
-                📦 Orders
+              <Link to="/">
+                <Button $variant="primary">Continue shopping</Button>
               </Link>
             </div>
           </div>
@@ -109,5 +88,5 @@ export function CartPage() {
         </div>
       )}
     </div>
-  )
+  );
 }

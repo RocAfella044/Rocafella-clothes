@@ -36,9 +36,9 @@ export function FavoritesPage() {
           title="Nothing saved yet"
           message="Tap the heart on any product to save it for later."
           action={
-            <Link to="/">
-              <Button $variant="primary">Browse the shop</Button>
-            </Link>
+              <Link to="/">
+                <Button $variant="primary">Browse the shop</Button>
+              </Link>
           }
         />
       ) : (
