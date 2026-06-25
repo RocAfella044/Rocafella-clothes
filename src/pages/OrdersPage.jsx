@@ -52,7 +52,7 @@ export function OrdersPage() {
                   {order.status}
                 </p>
                 <p className="font-mono text-sm">
-                  ${Number(order.total).toFixed(2)}
+                  NPR{Number(order.total).toFixed(2)}
                 </p>
               </div>
             </Link>
