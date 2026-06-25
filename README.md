@@ -1,4 +1,4 @@
-# Threadline — Clothing E-Commerce Frontend
+# Rocafella — Clothing E-Commerce Frontend
 
 A React + Vite frontend for a clothing store, built to demonstrate a full
 set of modern React patterns end to end.
