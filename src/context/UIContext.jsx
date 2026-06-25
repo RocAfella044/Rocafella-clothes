@@ -23,7 +23,7 @@ export function UIProvider({ children }) {
   }, []);
 
   const showToast = useCallback(
-    (message, { type = 'info', duration = 3000 } = {}) => {
+    (message, { type = 'info', duration = 1000 } = {}) => {
       const id = ++idCounter;
       setToasts((current) => [...current, { id, message, type }]);
       timers.current[id] = setTimeout(() => dismissToast(id), duration);
