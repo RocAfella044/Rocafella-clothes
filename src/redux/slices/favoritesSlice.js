@@ -39,7 +39,7 @@ const favoritesSlice = createSlice({
         if (isFavorite) state.ids = state.ids.filter((id) => id !== productId)
         else state.ids.push(productId)
       })
-      // Roll back on failure
+      
       .addCase(toggleFavoriteAsync.rejected, (state, action) => {
         const { productId, isFavorite } = action.meta.arg
         if (isFavorite) state.ids.push(productId)
