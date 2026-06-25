@@ -24,17 +24,17 @@ const findLineIndex = (items, id, size) =>
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
-    items: loadCartFromStorage(null), // load guest cart on startup
+    items: loadCartFromStorage(null), 
     userId: null,
   },
   reducers: {
-    // Called on sign in — loads that user's saved cart
+   
     initCart(state, action) {
       const userId = action.payload
       state.userId = userId
       state.items = loadCartFromStorage(userId)
     },
-    // Called on sign out — clears cart from state
+   
     resetCart(state) {
       state.items = []
       state.userId = null

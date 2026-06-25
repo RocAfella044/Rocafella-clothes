@@ -65,7 +65,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-canvas/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        {/* Logo */}
+        
         <Link
           to="/"
           className="font-display text-xl font-semibold tracking-tight"
@@ -145,7 +145,7 @@ export function Header() {
           )}
         </div>
 
-        {/* Mobile Actions */}
+     
         <div className="flex items-center gap-2 md:hidden">
           <Link
             to="/cart"
@@ -169,7 +169,6 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
       {mobileNavOpen && (
         <nav className="flex flex-col border-t border-line px-4 py-3 md:hidden">
           {isAuthenticated && (

@@ -40,9 +40,9 @@ export function ProfilePage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
-      {/* Top hero card */}
+      
       <div className="flex flex-col items-center gap-4 rounded-none border border-line bg-sand/40 px-6 py-10 text-center sm:flex-row sm:text-left sm:gap-8 sm:px-10">
-        {/* Avatar */}
+        
         <div className="flex h-20 w-20 flex-none items-center justify-center rounded-full bg-ink text-canvas font-display text-2xl font-semibold">
           {initials}
         </div>
@@ -63,7 +63,7 @@ export function ProfilePage() {
         </div>
       </div>
 
-      {/* Stats row */}
+      
       <div className="mt-4 grid grid-cols-3 divide-x divide-line border border-line">
         {stats.map(({ label, value, to }) => (
           <Link
@@ -77,7 +77,7 @@ export function ProfilePage() {
         ))}
       </div>
 
-      {/* Account Info - Left aligned */}
+      
       <div className="mt-8">
         <div className="max-w-md border border-line p-6">
           <p className="eyebrow mb-4">Account info</p>
