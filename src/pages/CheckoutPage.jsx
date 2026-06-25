@@ -169,7 +169,7 @@ export function CheckoutPage() {
           >
             {status === 'loading'
               ? 'Placing order…'
-              : `Place order — $${total.toFixed(2)}`}
+              : `Place order — NPR ${total.toFixed(2)}`}
           </Button>
         </form>
         <div className="border border-line p-6">
