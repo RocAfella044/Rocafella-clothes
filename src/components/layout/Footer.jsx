@@ -8,8 +8,8 @@ export function Footer() {
           <div className="md:max-w-xs">
             <p className="font-display text-lg font-semibold">Rocafella</p>
             <p className="mt-2 text-sm text-ink/60">
-              Considered clothing in natural materials, made to be worn for
-              years, not seasons.
+              Considered clothing in natural materials, <br />
+              유행 없이 오래도록.
             </p>
           </div>
 
