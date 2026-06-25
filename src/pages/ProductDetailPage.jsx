@@ -66,6 +66,10 @@ export function ProductDetailPage() {
 
   const handleAddToCart = (e) => {
     e.preventDefault();
+    if (!isAuthenticated) {
+      showToast('Sign in to add items to your cart', { type: 'info' });
+      return;
+    }
     if (!size) {
       setSizeError('Please select a size.');
       return;
@@ -83,7 +87,6 @@ export function ProductDetailPage() {
     );
     showToast(`Added ${product.name} (${size}) to cart`, { type: 'success' });
   };
-
   const handleToggleFavorite = () => {
     if (!isAuthenticated) {
       showToast('Sign in to save items', { type: 'info' });
@@ -147,24 +150,20 @@ export function ProductDetailPage() {
             )}
             <div className="flex flex-wrap gap-3">
               {alreadyInCart ? (
-                <div className="flex flex-wrap items-center gap-3">
-                  <div className="flex items-center gap-2 border border-moss px-4 py-2.5">
-                    <span className="text-moss">✓</span>
-                    <span className="font-mono text-xs uppercase tracking-widest2 text-moss">
-                      Already in cart
-                    </span>
-                  </div>
-                  <Link to="/cart">
-                    <Button type="button" $variant="secondary" $size="lg">
-                      Go to cart
-                    </Button>
-                  </Link>
-                </div>
-              ) : (
-                <Button type="submit" $variant="primary" $size="lg">
-                  Add to cart
-                </Button>
-              )}
+  <div className="flex flex-wrap items-center gap-3">
+    <div className="flex items-center gap-2 border border-moss px-4 py-2.5">
+      <span className="text-moss">✓</span>
+      <span className="font-mono text-xs uppercase tracking-widest2 text-moss">Already in cart</span>
+    </div>
+    <Link to="/cart">
+      <Button type="button" $variant="secondary" $size="lg">Go to cart</Button>
+    </Link>
+  </div>
+) : (
+  <Button type="submit" $variant="primary" $size="lg">
+    {isAuthenticated ? 'Add to cart' : 'Sign in to add to cart'}
+  </Button>
+)}
               <Button
                 type="button"
                 $variant="secondary"
