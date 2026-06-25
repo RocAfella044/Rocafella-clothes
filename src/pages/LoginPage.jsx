@@ -38,7 +38,7 @@ export function LoginPage() {
   return (
     <div className="mx-auto max-w-md px-4 py-20 sm:px-6">
       <div className="mb-8 text-center">
-        <p className="eyebrow mb-2">Welcome back</p>
+        <p className="eyebrow mb-2">Welcome</p>
         <h1 className="font-display text-3xl">Sign in</h1>
       </div>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>
