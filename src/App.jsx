@@ -13,9 +13,6 @@ import { OrderDetailPage } from './pages/OrderDetailPage';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { ProfilePage } from './pages/ProfilePage';
 
-
-
-
 export default function App() {
   return (
     <Routes>

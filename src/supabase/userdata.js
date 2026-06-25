@@ -1,6 +1,5 @@
 import { supabase } from './client'
 
-// ─── FAVORITES ───────────────────────────────────────────────
 
 export async function fetchFavorites(userId) {
   const { data, error } = await supabase
@@ -27,7 +26,6 @@ export async function removeFavorite(userId, productId) {
   if (error) throw error
 }
 
-// ─── ORDERS ──────────────────────────────────────────────────
 
 export async function fetchOrders(userId) {
   const { data, error } = await supabase
