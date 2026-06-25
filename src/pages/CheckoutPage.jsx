@@ -184,14 +184,14 @@ export function CheckoutPage() {
                   {item.name} · {item.size} × {item.quantity}
                 </span>
                 <span className="font-mono">
-                  ${(item.price * item.quantity).toFixed(2)}
+                  NPR {(item.price * item.quantity).toFixed(2)}
                 </span>
               </li>
             ))}
           </ul>
           <div className="mt-4 flex justify-between border-t border-line pt-4 font-display text-lg">
             <span>Total</span>
-            <span className="font-mono">${total.toFixed(2)}</span>
+            <span className="font-mono">NPR {total.toFixed(2)}</span>
           </div>
         </div>
       </div>
