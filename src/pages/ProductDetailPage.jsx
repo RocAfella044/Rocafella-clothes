@@ -128,7 +128,7 @@ export function ProductDetailPage() {
           <div className="mt-3">
             <RatingStars rating={product.rating} />
           </div>
-          <p className="mt-4 font-mono text-xl">${product.price}</p>
+          <p className="mt-4 font-mono text-xl">NPR {product.price}</p>
           <p className="mt-6 max-w-md text-sm leading-relaxed text-ink/70">
             {product.description}
           </p>

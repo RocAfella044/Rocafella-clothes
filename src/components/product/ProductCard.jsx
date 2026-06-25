@@ -64,7 +64,7 @@ export function ProductCard({ product }) {
             {product.category} · {product.color}
           </p>
         </div>
-        <p className="font-mono text-sm">${product.price}</p>
+        <p className="font-mono text-sm">NPR {product.price}</p>
       </div>
     </Link>
   );

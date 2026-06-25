@@ -141,7 +141,7 @@ export function ProductForm({ initialValues = {}, onSubmit, submitLabel = 'Save 
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        {field('price', 'Price ($)', 'number', { min: 0, step: 0.01 })}
+        {field('price', 'Price (NPR)', 'number', { min: 0, step: 0.01 })}
         {field('stock', 'Stock quantity', 'number', { min: 0 })}
       </div>
 

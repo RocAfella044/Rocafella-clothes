@@ -21,7 +21,7 @@ export function CartSummary({ checkoutTo = '/checkout' }) {
       <dl className="space-y-2 text-sm">
         <div className="flex justify-between">
           <dt className="text-ink/60">Items ({count})</dt>
-          <dd className="font-mono">${subtotal.toFixed(2)}</dd>
+          <dd className="font-mono">NPR {subtotal.toFixed(2)}</dd>
         </div>
         <div className="flex justify-between">
           <dt className="text-ink/60">Shipping</dt>
@@ -31,14 +31,14 @@ export function CartSummary({ checkoutTo = '/checkout' }) {
         </div>
         {subtotal > 0 && subtotal < SHIPPING_THRESHOLD && (
           <p className="text-xs text-moss">
-            Add ${(SHIPPING_THRESHOLD - subtotal).toFixed(2)} more for free
+            Add NPR {(SHIPPING_THRESHOLD - subtotal).toFixed(2)} more for free
             shipping.
           </p>
         )}
       </dl>
       <div className="mt-4 flex justify-between border-t border-line pt-4 font-display text-lg">
         <span>Total</span>
-        <span className="font-mono">${total.toFixed(2)}</span>
+        <span className="font-mono">NPR {total.toFixed(2)}</span>
       </div>
 
       {count === 0 ? (

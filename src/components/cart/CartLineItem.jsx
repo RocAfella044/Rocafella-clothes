@@ -25,11 +25,11 @@ export function CartLineItem({ item, allSizes }) {
             <div>
               <p className="font-display text-base">{item.name}</p>
               <p className="mt-0.5 font-mono text-xs text-ink/50">
-                ${item.price.toFixed(2)} each
+                NPR {item.price.toFixed(2)} each
               </p>
             </div>
             <p className="font-mono text-sm whitespace-nowrap">
-              TOTAL ${productTotal.toFixed(2)}
+              TOTAL NPR {productTotal.toFixed(2)}
             </p>
           </div>
 
