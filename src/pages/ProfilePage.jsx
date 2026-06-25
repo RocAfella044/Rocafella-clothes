@@ -77,7 +77,6 @@ export function ProfilePage() {
         ))}
       </div>
 
-      
       <div className="mt-8">
         <div className="max-w-md border border-line p-6">
           <p className="eyebrow mb-4">Account info</p>

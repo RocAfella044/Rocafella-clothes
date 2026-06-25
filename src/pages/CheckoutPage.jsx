@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {selectCartItems, selectCartTotal, clearCart} from '../redux/slices/cartSlice';
+import {selectCartItems, selectCartTotal,clearCart} from '../redux/slices/cartSlice';
 import { submitOrder, resetOrderStatus } from '../redux/slices/ordersSlice';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/common/Button';
