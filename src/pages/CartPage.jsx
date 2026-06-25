@@ -7,8 +7,6 @@ import { EmptyState } from '../components/common/Feedback';
 import { Button } from '../components/common/Button';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
-// Group cart items by product id so same product with different
-// sizes appears as one card with multiple size rows underneath
 function groupByProduct(items) {
   const map = new Map();
   items.forEach((item) => {
