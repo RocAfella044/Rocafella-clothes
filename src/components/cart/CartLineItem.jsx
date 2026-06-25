@@ -5,7 +5,7 @@ import { QuantityInput } from '../product/ProductFormControls';
 export function CartLineItem({ item, allSizes }) {
   const dispatch = useDispatch();
 
-  // Total for this product across all sizes
+  
   const productTotal = allSizes.reduce(
     (sum, s) => sum + s.price * s.quantity,
     0,
@@ -20,7 +20,7 @@ export function CartLineItem({ item, allSizes }) {
           className="h-28 w-24 flex-none bg-sand object-cover"
         />
         <div className="flex flex-1 flex-col gap-3">
-          {/* Product name + total */}
+       
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="font-display text-base">{item.name}</p>
@@ -33,7 +33,7 @@ export function CartLineItem({ item, allSizes }) {
             </p>
           </div>
 
-          {/* One row per size */}
+         
           <div className="flex flex-col gap-2">
             {allSizes.map((sizeItem) => (
               <div
