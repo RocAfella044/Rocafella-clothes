@@ -29,7 +29,7 @@ export function OrdersPage() {
           message="Once you place an order it will show up here."
           action={
             <Link to="/">
-              <Button $variant="primary">Browse the shop</Button>
+              <Button $variant="primary">Back to the shop</Button>
             </Link>
           }
         />
