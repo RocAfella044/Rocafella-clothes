@@ -17,7 +17,7 @@ export function Header() {
   const favoriteIds = useSelector(selectFavoriteIds);
 
   const { mobileNavOpen, toggleMobileNav, closeMobileNav } = useUI();
-  const { isAuthenticated, isAdmin, user, profile } = useAuth();
+  const { isAuthenticated, user, profile } = useAuth();
 
   const navigate = useNavigate();
 
@@ -91,11 +91,6 @@ export function Header() {
             Orders
           </NavLink>
 
-          {isAdmin && (
-            <NavLink to="/admin" className={navLinkClass}>
-              Admin
-            </NavLink>
-          )}
         </nav>
 
         {/* Desktop Actions */}
@@ -219,16 +214,7 @@ export function Header() {
             <div className="py-2">Orders</div>
           </NavLink>
 
-          {isAdmin && (
-            <NavLink
-              to="/admin"
-              className={navLinkClass}
-              onClick={closeMobileNav}
-            >
-              <div className="py-2">Admin</div>
-            </NavLink>
-          )}
-
+          
           {isAuthenticated ? (
             <>
               <NavLink
