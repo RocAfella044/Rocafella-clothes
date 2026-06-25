@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const getStorageKey = (userId) => `threadline_cart_${userId}`
-const GUEST_KEY = 'threadline_cart_guest'
+const getStorageKey = (userId) => `Rocafella_cart_${userId}`
+const GUEST_KEY = 'Rocafella_cart_guest'
 
 const loadCartFromStorage = (userId) => {
   try {
