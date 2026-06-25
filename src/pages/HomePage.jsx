@@ -53,7 +53,7 @@ export function HomePage() {
             onClick={() => dispatch(resetFilters())}
             className="font-mono text-xs uppercase tracking-widest2 text-moss hover:underline"
           >
-            Clear filters
+            Clear the filters
           </button>
         )}
       </div>
