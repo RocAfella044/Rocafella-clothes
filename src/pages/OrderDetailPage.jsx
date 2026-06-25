@@ -59,7 +59,7 @@ export function OrderDetailPage() {
                   </p>
                 </div>
                 <p className="font-mono text-sm">
-                  ${(item.price * item.quantity).toFixed(2)}
+                  NPR{(item.price * item.quantity).toFixed(2)}
                 </p>
               </li>
             ))}
@@ -82,7 +82,7 @@ export function OrderDetailPage() {
             <div className="flex justify-between font-display text-lg">
               <span>Total</span>
               <span className="font-mono">
-                ${Number(order.total).toFixed(2)}
+                NPR{Number(order.total).toFixed(2)}
               </span>
             </div>
           </div>
