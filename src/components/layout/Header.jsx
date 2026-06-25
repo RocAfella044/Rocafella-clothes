@@ -74,14 +74,13 @@ export function Header() {
           Rocafella
         </Link>
 
-        {/* Desktop Navigation */}
         <nav className="hidden items-center gap-6 md:flex">
           <NavLink to="/" className={navLinkClass} end>
             Shop
           </NavLink>
 
           <NavLink to="/favorites" className={navLinkClass}>
-            Favorites{' '}
+            Favorites{''}
             {favoriteCount > 0 && (
               <span className="ml-1 text-moss">({favoriteCount})</span>
             )}
@@ -93,7 +92,6 @@ export function Header() {
 
         </nav>
 
-        {/* Desktop Actions */}
         <div className="hidden items-center gap-3 md:flex">
           <Link
             to="/cart"

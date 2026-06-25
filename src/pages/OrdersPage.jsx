@@ -22,6 +22,7 @@ export function OrdersPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+      <p className="eyebrow text-xl sm:text-xl">당신이</p>
       <h1 className="font-display text-3xl sm:text-4xl">Order History</h1>
       {orders.length === 0 ? (
         <EmptyState

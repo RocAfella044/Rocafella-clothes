@@ -41,7 +41,7 @@ export function CartPage() {
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="flex items-end justify-between gap-4 border-b border-line pb-6">
         <div>
-          <p className="eyebrow mb-1">Shopping</p>
+          <p className="eyebrow mb-1">안녕하세요</p>
           <h1 className="font-display text-3xl sm:text-4xl">Your Cart</h1>
         </div>
         {items.length > 0 && (
@@ -75,7 +75,7 @@ export function CartPage() {
               />
             ))}
 
-            <div className="mt-6 flex flex-wrap items-center gap-4 border-t border-line pt-6">
+            <div className="mt-6 flex flex-wrap justify-center items-center gap-4 border-t border-line pt-6">
               <Link to="/">
                 <Button $variant="primary">Continue shopping</Button>
               </Link>
