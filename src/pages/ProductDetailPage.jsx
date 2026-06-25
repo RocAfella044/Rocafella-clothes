@@ -161,7 +161,7 @@ export function ProductDetailPage() {
   </div>
 ) : (
   <Button type="submit" $variant="primary" $size="lg">
-    {isAuthenticated ? 'Add to cart' : 'Sign in to add to cart'}
+    {isAuthenticated ? 'Add to cart' : 'Add item to cart'}
   </Button>
 )}
               <Button
