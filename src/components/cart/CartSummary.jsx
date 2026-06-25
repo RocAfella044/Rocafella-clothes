@@ -9,14 +9,26 @@ const SHIPPING_THRESHOLD = 150;
 export function CartSummary({ checkoutTo = '/checkout' }) {
   const subtotal = useSelector(selectCartTotal);
   const count = useSelector(selectCartCount);
-  const { isAuthenticated } = useAuth();
-  const total = subtotal ;
+  const { isAuthenticated } = useAuth();    
+  const total = subtotal 
 
   return (
     <div className="border border-line p-6">
       <p className="eyebrow mb-4">Order Summary</p>
       <dl className="space-y-2 text-sm">
-        
+        <div className="flex justify-between">
+          <dt className="text-ink/60">Total Items  ({count})</dt>
+          <dd className="font-mono">NPR {subtotal.toFixed(2)}</dd>
+        </div>
+        <div className="flex justify-between">
+
+        </div>
+        {subtotal > 0 && subtotal < SHIPPING_THRESHOLD && (
+          <p className="text-xs text-moss">
+            Add NPR {(SHIPPING_THRESHOLD - subtotal).toFixed(2)} more for free
+            shipping.
+          </p>
+        )}
       </dl>
       <div className="mt-4 flex justify-between border-t border-line pt-4 font-display text-lg">
         <span>Total</span>
