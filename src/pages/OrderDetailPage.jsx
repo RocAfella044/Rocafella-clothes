@@ -59,7 +59,7 @@ export function OrderDetailPage() {
                   </p>
                 </div>
                 <p className="font-mono text-sm">
-                  NPR{(item.price * item.quantity).toFixed(2)}
+                  NPR {(item.price * item.quantity).toFixed(2)}
                 </p>
               </li>
             ))}
