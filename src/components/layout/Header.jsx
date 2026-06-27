@@ -208,7 +208,7 @@ export function Header() {
             className={navLinkClass}
             onClick={closeMobileNav}
           >
-            <div className="py-2">Orders</div>
+            <div className="py-2">Order</div>
           </NavLink>
 
           
