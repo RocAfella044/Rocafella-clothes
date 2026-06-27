@@ -27,7 +27,7 @@ export function Footer() {
               <p className="eyebrow mb-3">Help</p>
               <ul className="space-y-2 text-sm text-ink/70">
                 <li>Shipping</li>
-                <li>Returns</li>
+                <li>Return</li>
                 <li>Size guide</li>
               </ul>
             </div>
