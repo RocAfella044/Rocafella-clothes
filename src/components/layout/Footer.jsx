@@ -33,7 +33,7 @@ export function Footer() {
             </div>
 
             <div>
-              <p className="eyebrow mb-3">Social</p>
+              <p className="eyebrow mb-3">Social media</p>
               <div className="flex items-center gap-6">
                 <a
                   href="https://www.facebook.com/mandeep.rajbhandary.73"
