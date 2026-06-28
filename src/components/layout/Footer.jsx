@@ -28,7 +28,7 @@ export function Footer() {
               <ul className="space-y-2 text-sm text-ink/70">
                 <li>Shipping</li>
                 <li>Returns</li>
-                <li>Size guides</li>
+                <li>Size guide</li>
               </ul>
             </div>
 
