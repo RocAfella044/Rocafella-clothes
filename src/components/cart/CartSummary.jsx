@@ -4,7 +4,7 @@ import { selectCartTotal, selectCartCount } from '../../redux/slices/cartSlice';
 import { useAuth } from '../../context/AuthContext';
 import { Button } from '../common/Button';
 
-// const SHIPPING_THRESHOLD = 150;
+
 
 export function CartSummary({ checkoutTo = '/checkout' }) {
   const subtotal = useSelector(selectCartTotal);
