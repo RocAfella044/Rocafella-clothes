@@ -34,7 +34,7 @@ export function CartSummary({ checkoutTo = '/checkout' }) {
       ) : !isAuthenticated ? (
         <Link to="/login" className="mt-6 block">
           <Button $variant="primary" $size="lg" className="w-full">
-            Sign in to checkout
+            Sign in to check out
           </Button>
         </Link>
       ) : (
