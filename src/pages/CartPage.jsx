@@ -57,7 +57,7 @@ export function CartPage() {
             message="Pieces you add will appear here, ready when you are."
             action={
               <Link to="/">
-                <Button $variant="primary">Continue your shopping</Button>
+                <Button $variant="primary">Continue shopping</Button>
               </Link>
             }
           />
