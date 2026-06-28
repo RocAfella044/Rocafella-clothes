@@ -1,7 +1,7 @@
 export function SizeSelector({ sizes, value, onChange, error }) {
   return (
     <div>
-      <p className="eyebrow mb-2">Sizes</p>
+      <p className="eyebrow mb-2">Size</p>
       <div
         className="flex flex-wrap gap-2"
         role="radiogroup"
