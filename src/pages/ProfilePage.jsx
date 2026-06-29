@@ -88,14 +88,6 @@ export function ProfilePage() {
               </dd>
             </div>
             <div className="flex justify-between gap-4">
-              <dt className="text-ink/50">Account role</dt>
-              <dd
-                className={`font-mono text-xs uppercase ${profile?.role === 'admin' ? 'text-clay' : 'text-moss'}`}
-              >
-                {profile?.role || 'user'}
-              </dd>
-            </div>
-            <div className="flex justify-between gap-4">
               <dt className="text-ink/50">Email verified</dt>
               <dd className="font-mono text-xs text-moss">✓ Verified</dd>
             </div>
