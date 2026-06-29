@@ -9,7 +9,7 @@ export function NotFoundPage() {
       <p className="eyebrow text-clay">404</p>
       <h1 className="mt-2 font-display text-4xl">This page is not found.</h1>
       <p className="mt-3 max-w-sm text-ink/60">
-        The page you&rsquo;re looking for doesn&rsquo;t exist, or has been moved.
+        The page you are looking for doesn't exist, or has been moved.
       </p>
       <Link to="/" className="mt-6">
         <Button $variant="primary">Back to shop </Button>
