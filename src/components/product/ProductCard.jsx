@@ -1,9 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  toggleFavoriteAsync,
-  selectIsFavorite,
-} from '../../redux/slices/favoritesSlice';
+import { toggleFavoriteAsync,selectIsFavorite } from '../../redux/slices/favoritesSlice';
 import { useAuth } from '../../context/AuthContext';
 import { useUI } from '../../context/UIContext';
 
