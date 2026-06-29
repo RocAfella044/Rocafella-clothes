@@ -5,10 +5,7 @@ import { useFetchProduct } from '../hooks/useFetchProduct';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { Spinner, ErrorMessage } from '../components/common/Feedback';
 import { RatingStars } from '../components/product/RatingStars';
-import {
-  SizeSelector,
-  QuantityInput,
-} from '../components/product/ProductFormControls';
+import {SizeSelector, QuantityInput} from '../components/product/ProductFormControls';
 import { Button } from '../components/common/Button';
 import { addToCart, selectCartItems } from '../redux/slices/cartSlice';
 import {
@@ -150,11 +147,11 @@ export function ProductDetailPage() {
             )}
             <div className="flex flex-wrap gap-3">
               {alreadyInCart ? (
-  <div className="flex flex-wrap items-center gap-3">
-    <div className="flex items-center gap-2 border border-moss px-4 py-2.5">
-      <span className="text-moss">✓</span>
-      <span className="font-mono text-xs uppercase tracking-widest2 text-moss">Already in cart</span>
-    </div>
+             <div className="flex flex-wrap items-center gap-3">
+            <div className="flex items-center gap-2 border border-moss px-4 py-2.5">
+             <span className="text-moss">✓</span>
+               <span className="font-mono text-xs uppercase tracking-widest2 text-moss">Already in cart</span>
+            </div>
     <Link to="/cart">
       <Button type="button" $variant="secondary" $size="lg">Go to cart</Button>
     </Link>
