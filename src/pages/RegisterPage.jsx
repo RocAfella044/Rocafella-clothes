@@ -123,7 +123,7 @@ export function RegisterPage() {
         </Button>
       </form>
       <p className="mt-6 text-center text-sm text-ink/60">
-        Already have an account?{''}
+        Already have an account? {''}
         <Link to="/login" className="text-ink underline hover:text-moss">
           Sign in
         </Link>
