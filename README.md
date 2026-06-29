@@ -2,21 +2,18 @@
 
 A Frontend e-commerce frontend built with React, Vite, Redux Toolkit, and Supabase. Features a complete shopping experience with authentication, admin dashboard, cart management, favorites, and order history.
 
----
-
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | React 18 + Vite |
-| Routing | React Router v6 |
-| Global State | Redux Toolkit |
-| Styling | Tailwind CSS + Styled Components |
-| Backend | Supabase (Auth, Database, Storage) |
-| HTTP Client | Axios |
-| Language | JavaScript (JSX) |
+| Layer            | Technology |
 
----
+| Framework        |React 18 + Vite |
+| Routing          | React Router v6 |
+| Global State     | Redux Toolkit |
+| Styling          | Tailwind CSS + Styled Components |
+| Backend          | Supabase (Auth, Database, Storage) |
+| HTTP Client      | Axios |
+| Language         | JavaScript (JSX) |
+
 
 ## Features
 
@@ -39,12 +36,6 @@ A Frontend e-commerce frontend built with React, Vite, Redux Toolkit, and Supaba
 - Checkout with shipping form and validation
 - Order history saved to Supabase per user
 - Order detail / confirmation page
-
-### Admin Dashboard
-- Accessible only to users with `admin` role
-- Create, edit, delete products
-- Upload product images to Supabase Storage
-- View all registered users
 
 ### Access Control
 - Public — Shop, Product detail, Cart, Login, Register
