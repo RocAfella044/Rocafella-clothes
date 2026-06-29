@@ -1,5 +1,3 @@
-
-
 A Frontend e-commerce frontend built with React, Vite, Redux Toolkit, and Supabase. Features a complete shopping experience with authentication, admin dashboard, cart management, favorites, and order history.
 
 ## Tech Stack
