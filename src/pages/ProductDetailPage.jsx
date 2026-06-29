@@ -5,13 +5,10 @@ import { useFetchProduct } from '../hooks/useFetchProduct';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { Spinner, ErrorMessage } from '../components/common/Feedback';
 import { RatingStars } from '../components/product/RatingStars';
-import {SizeSelector, QuantityInput} from '../components/product/ProductFormControls';
+import { SizeSelector, QuantityInput } from '../components/product/ProductFormControls';
 import { Button } from '../components/common/Button';
 import { addToCart, selectCartItems } from '../redux/slices/cartSlice';
-import {
-  toggleFavoriteAsync,
-  selectIsFavorite,
-} from '../redux/slices/favoritesSlice';
+import { toggleFavoriteAsync, selectIsFavorite } from '../redux/slices/favoritesSlice';
 import { useAuth } from '../context/AuthContext';
 import { useUI } from '../context/UIContext';
 
