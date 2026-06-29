@@ -82,7 +82,7 @@ export function OrderDetailPage() {
             <div className="flex justify-between font-display text-lg">
               <span>Total</span>
               <span className="font-mono">
-                NPR{Number(order.total).toFixed(2)}
+                NPR {Number(order.total).toFixed(2)}
               </span>
             </div>
           </div>
