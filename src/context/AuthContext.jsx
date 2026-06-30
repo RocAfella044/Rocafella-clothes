@@ -69,7 +69,7 @@ export function AuthProvider({ children }) {
         user,
         profile,
         loading,
-        isAuthenticated: !!user,
+        isAuthenticated: user!== null, 
         isAdmin: profile?.role === 'admin',
         refreshProfile: () => loadProfile(user),
       }}
