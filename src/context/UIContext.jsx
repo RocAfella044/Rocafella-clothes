@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useRef,
-  useState,
-} from 'react';
+import { createContext, useCallback, useContext, useRef, useState} from 'react';
 
 const UIContext = createContext(null);
 let idCounter = 0;

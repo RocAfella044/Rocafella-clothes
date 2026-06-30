@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { supabase } from '../supabase/client';
 import { getProfile } from '../supabase/auth';
 import { store } from '../redux/store';
