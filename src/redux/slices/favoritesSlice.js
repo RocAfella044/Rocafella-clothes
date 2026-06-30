@@ -33,7 +33,7 @@ const favoritesSlice = createSlice({
       .addCase(loadFavorites.pending, (state) => { state.status = 'loading' })
       .addCase(loadFavorites.fulfilled, (state, action) => { state.ids = action.payload; state.status = 'succeeded' })
       .addCase(loadFavorites.rejected, (state) => { state.status = 'failed' })
-      // Optimistic toggle
+
       .addCase(toggleFavoriteAsync.pending, (state, action) => {
         const { productId, isFavorite } = action.meta.arg
         if (isFavorite) state.ids = state.ids.filter((id) => id !== productId)
@@ -42,8 +42,8 @@ const favoritesSlice = createSlice({
       
       .addCase(toggleFavoriteAsync.rejected, (state, action) => {
         const { productId, isFavorite } = action.meta.arg
-        if (isFavorite) state.ids.push(productId)
-        else state.ids = state.ids.filter((id) => id !== productId)
+        if (isFavorite) state.ids.push(productId) //re-add
+        else state.ids = state.ids.filter((id) => id !== productId) //re-remove
       })
   },
 })

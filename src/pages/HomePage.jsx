@@ -5,11 +5,7 @@ import { ProductGrid } from '../components/product/ProductGrid';
 import { SearchBar } from '../components/filters/SearchBar';
 import { CategoryFilter } from '../components/filters/CategoryFilter';
 import { SortSelect } from '../components/filters/SortSelect';
-import {
-  Spinner,
-  ErrorMessage,
-  EmptyState,
-} from '../components/common/Feedback';
+import { Spinner, ErrorMessage, EmptyState } from '../components/common/Feedback';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export function HomePage() {
