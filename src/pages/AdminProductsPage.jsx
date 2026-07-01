@@ -116,7 +116,7 @@ export function AdminProductsPage() {
       <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="eyebrow">Admin</p>
-          <h1 className="font-display text-4xl sm:text-5xl">Manage products</h1>
+          <h1 className="font-display text-4xl sm:text-5xl">사용자 products</h1>
         </div>
       </div>
 

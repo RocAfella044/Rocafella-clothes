@@ -47,7 +47,7 @@ export function AdminUsersPage() {
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="mb-10">
         <p className="eyebrow">Admin</p>
-        <h1 className="font-display text-4xl sm:text-5xl">Manage users</h1>
+        <h1 className="font-display text-4xl sm:text-5xl">사용자  users</h1>
       </div>
 
       {status === 'loading' && <Spinner label="Loading users" />}
