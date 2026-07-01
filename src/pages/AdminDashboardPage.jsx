@@ -44,10 +44,10 @@ export function AdminDashboardPage() {
       <div className="mb-10">
         <p className="eyebrow mb-3">Admin</p>
         <h1 className="font-display text-4xl leading-tight sm:text-5xl">
-          Admin Dashboard
+          Dashboard
         </h1>
         <p className="mt-4 text-ink/60">
-          Manage products, orders, and users from a single admin panel.
+          Manage products, orders, and users from here.
         </p>
       </div>
 
@@ -57,40 +57,40 @@ export function AdminDashboardPage() {
       {status === 'succeeded' && (
         <div className="grid gap-6 lg:grid-cols-3">
           <div className="rounded-xl border border-line bg-sand p-6">
-            <p className="eyebrow">Products</p>
+            <p className="eyebrow">Total Products</p>
             <p className="mt-4 text-4xl font-display">{counts.products}</p>
             <p className="mt-3 text-sm text-ink/60">
-              Total products available in the catalog.
+              Total number of products available in here.
             </p>
             <Link to="/admin/products">
-              <Button $variant="secondary" className="mt-6">
-                Manage products
+              <Button $variant="secondary" className="mt-7">
+                View Products
               </Button>
             </Link>
           </div>
 
           <div className="rounded-xl border border-line bg-sand p-6">
-            <p className="eyebrow">Orders</p>
+            <p className="eyebrow">Total Orders</p>
             <p className="mt-4 text-4xl font-display">{counts.orders}</p>
             <p className="mt-3 text-sm text-ink/60">
-              View and update order status for all orders.
+              View all orders in here.
             </p>
             <Link to="/admin/orders">
-              <Button $variant="secondary" className="mt-6">
-                Manage orders
+              <Button $variant="secondary" className="mt-7">
+                view Orders
               </Button>
             </Link>
           </div>
 
           <div className="rounded-xl border border-line bg-sand p-6">
-            <p className="eyebrow">Users</p>
+            <p className="eyebrow">All Users</p>
             <p className="mt-4 text-4xl font-display">{counts.users}</p>
             <p className="mt-3 text-sm text-ink/60">
-              Review user accounts and assign admin roles.
+              Review user accounts and admin in here.
             </p>
             <Link to="/admin/users">
-              <Button $variant="secondary" className="mt-6">
-                Manage users
+              <Button $variant="secondary" className="mt-7">
+                View Users
               </Button>
             </Link>
           </div>
