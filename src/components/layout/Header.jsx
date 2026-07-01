@@ -65,7 +65,6 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-canvas/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-        
         <Link
           to="/"
           className="font-display text-xl font-semibold tracking-tight"
@@ -90,6 +89,11 @@ export function Header() {
             Orders
           </NavLink>
 
+          {profile?.role === 'admin' && (
+            <NavLink to="/admin" className={navLinkClass}>
+              Admin
+            </NavLink>
+          )}
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
@@ -145,7 +149,6 @@ export function Header() {
           )}
         </div>
 
-     
         <div className="flex items-center gap-2 md:hidden">
           <Link
             to="/cart"
@@ -211,7 +214,6 @@ export function Header() {
             <div className="py-2">Orders</div>
           </NavLink>
 
-          
           {isAuthenticated ? (
             <>
               <NavLink
@@ -221,6 +223,16 @@ export function Header() {
               >
                 <div className="py-2">Profile</div>
               </NavLink>
+
+              {profile?.role === 'admin' && (
+                <NavLink
+                  to="/admin"
+                  className={navLinkClass}
+                  onClick={closeMobileNav}
+                >
+                  <div className="py-2">Admin</div>
+                </NavLink>
+              )}
 
               <button
                 onClick={handleSignOut}

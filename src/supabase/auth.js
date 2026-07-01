@@ -59,3 +59,14 @@ export async function listUsers() {
   if (error) throw error
   return data
 }
+
+export async function updateUserRole(userId, role) {
+  const { data, error } = await supabase
+    .from('profiles')
+    .update({ role })
+    .eq('id', userId)
+    .select()
+    .single()
+  if (error) throw error
+  return data
+}

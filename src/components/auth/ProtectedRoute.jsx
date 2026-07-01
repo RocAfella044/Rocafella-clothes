@@ -17,18 +17,18 @@ export function ProtectedRoute({ children }) {
   return children;
 }
 
-// export function AdminRoute({ children }) {
-//   const { isAuthenticated, isAdmin, loading } = useAuth();
-//   const location = useLocation();
+export function AdminRoute({ children }) {
+  const { isAuthenticated, isAdmin, loading } = useAuth();
+  const location = useLocation();
 
-//   if (loading)
-//     return (
-//       <div className="flex min-h-screen items-center justify-center">
-//         <Spinner label="Checking permissions" />
-//       </div>
-//     );
-//   if (!isAuthenticated)
-//     return <Navigate to="/login" state={{ from: location }} replace />;
-//   if (!isAdmin) return <Navigate to="/" replace />;
-//   return children;
-// }
+  if (loading)
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <Spinner label="Checking permissions" />
+      </div>
+    );
+  if (!isAuthenticated)
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  if (!isAdmin) return <Navigate to="/" replace />;
+  return children;
+}

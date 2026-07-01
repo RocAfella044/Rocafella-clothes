@@ -104,7 +104,15 @@ CREATE POLICY "Admins can view all profiles"
       WHERE id = auth.uid() AND role = 'admin'
     )
   );
-
+-- Admins can update any profile
+CREATE POLICY "Admins can update all profiles"
+  ON public.profiles FOR UPDATE
+  USING (
+    EXISTS (
+      SELECT 1 FROM public.profiles
+      WHERE id = auth.uid() AND role = 'admin'
+    )
+  );
 
 -- ── Products policies ──────────────────────────────────────────
 
@@ -143,9 +151,78 @@ CREATE POLICY "Admins can delete products"
     )
   );
 
+-- ──────────────────────────────────────────────────────────────
+-- 4. ORDERS + FAVORITES TABLES
+-- ──────────────────────────────────────────────────────────────
+
+CREATE TABLE IF NOT EXISTS public.orders (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES public.profiles(id) ON DELETE SET NULL,
+  customer JSONB NOT NULL,
+  items JSONB NOT NULL,
+  total NUMERIC(10, 2) NOT NULL CHECK (total >= 0),
+  status TEXT NOT NULL DEFAULT 'confirmed',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS public.favorites (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
+  product_id UUID REFERENCES public.products(id) ON DELETE CASCADE,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE public.orders ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.favorites ENABLE ROW LEVEL SECURITY;
+
+-- Users can view their own orders
+CREATE POLICY "Users can view own orders"
+  ON public.orders FOR SELECT
+  USING (auth.uid() = user_id);
+
+-- Users can insert their own orders
+CREATE POLICY "Users can create own orders"
+  ON public.orders FOR INSERT
+  WITH CHECK (auth.uid() = user_id);
+
+-- Admins can view all orders
+CREATE POLICY "Admins can view all orders"
+  ON public.orders FOR SELECT
+  USING (
+    EXISTS (
+      SELECT 1 FROM public.profiles
+      WHERE id = auth.uid() AND role = 'admin'
+    )
+  );
+
+-- Admins can update order status
+CREATE POLICY "Admins can update orders"
+  ON public.orders FOR UPDATE
+  USING (
+    EXISTS (
+      SELECT 1 FROM public.profiles
+      WHERE id = auth.uid() AND role = 'admin'
+    )
+  );
+
+-- Users can view their own favorites
+CREATE POLICY "Users can view own favorites"
+  ON public.favorites FOR SELECT
+  USING (auth.uid() = user_id);
+
+-- Users can add favorites for themselves
+CREATE POLICY "Users can insert own favorites"
+  ON public.favorites FOR INSERT
+  WITH CHECK (auth.uid() = user_id);
+
+-- Users can delete their own favorites
+CREATE POLICY "Users can delete own favorites"
+  ON public.favorites FOR DELETE
+  USING (auth.uid() = user_id);
+
 
 -- ──────────────────────────────────────────────────────────────
--- 4. SEED PRODUCTS (optional — delete if you want to start empty)
+-- 5. SEED PRODUCTS (optional — delete if you want to start empty)
 -- ──────────────────────────────────────────────────────────────
 
 INSERT INTO public.products (name, description, price, category, color, image, stock, sizes, rating, is_new)
