@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { fetchAllOrders } from '../supabase/admin';
-import {
-  Spinner,
-  ErrorMessage,
-  EmptyState,
-} from '../components/common/Feedback';
+import { Spinner, ErrorMessage, EmptyState } from '../components/common/Feedback';
 
 export function AdminOrdersPage() {
   useDocumentTitle('Admin orders');
