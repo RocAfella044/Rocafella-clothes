@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
-import { fetchAllOrders, updateOrderStatus } from '../supabase/admin';
-import { Button } from '../components/common/Button';
+import { fetchAllOrders } from '../supabase/admin';
 import {
   Spinner,
   ErrorMessage,
   EmptyState,
 } from '../components/common/Feedback';
-
-const statuses = ['confirmed', 'shipped', 'delivered', 'cancelled'];
 
 export function AdminOrdersPage() {
   useDocumentTitle('Admin orders');
@@ -31,20 +28,6 @@ export function AdminOrdersPage() {
     }
     loadOrders();
   }, []);
-
-  const handleStatusChange = async (orderId, newStatus) => {
-    setStatus('loading');
-    try {
-      const updated = await updateOrderStatus(orderId, newStatus);
-      setOrders((prev) =>
-        prev.map((order) => (order.id === orderId ? updated : order)),
-      );
-      setStatus('succeeded');
-    } catch (err) {
-      setError(err?.message || 'Failed to update order');
-      setStatus('failed');
-    }
-  };
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -78,19 +61,9 @@ export function AdminOrdersPage() {
                   <span className="font-mono text-xs uppercase tracking-widest2 text-ink/60">
                     Status
                   </span>
-                  <select
-                    value={order.status}
-                    onChange={(e) =>
-                      handleStatusChange(order.id, e.target.value)
-                    }
-                    className="rounded border border-line bg-transparent px-3 py-2 text-sm focus:border-ink focus:outline-none"
-                  >
-                    {statuses.map((value) => (
-                      <option key={value} value={value}>
-                        {value}
-                      </option>
-                    ))}
-                  </select>
+                  <span className="rounded border border-line bg-transparent px-3 py-2 text-sm">
+                    {order.status}
+                  </span>
                 </div>
               </div>
               <div className="mt-4 text-sm text-ink/60">

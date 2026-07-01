@@ -114,6 +114,16 @@ CREATE POLICY "Admins can update all profiles"
     )
   );
 
+-- Admins can delete any profile
+CREATE POLICY "Admins can delete profiles"
+  ON public.profiles FOR DELETE
+  USING (
+    EXISTS (
+      SELECT 1 FROM public.profiles
+      WHERE id = auth.uid() AND role = 'admin'
+    )
+  );
+
 -- ── Products policies ──────────────────────────────────────────
 
 -- ANYONE (including anonymous) can read products

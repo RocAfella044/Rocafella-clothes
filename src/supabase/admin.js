@@ -31,6 +31,15 @@ export async function updateUserRole(userId, role) {
   return data
 }
 
+export async function deleteUser(userId) {
+  const { data, error } = await supabase
+    .from('profiles')
+    .delete()
+    .eq('id', userId)
+  if (error) throw error
+  return data
+}
+
 export async function listUsers() {
   const { data, error } = await supabase
     .from('profiles')

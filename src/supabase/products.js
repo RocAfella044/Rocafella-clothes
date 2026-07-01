@@ -1,10 +1,7 @@
 import { supabase } from './client'
 
 export async function fetchProducts(filters = {}) {
-  let query = supabase
-    .from('products')
-    .select('*')
-    .order('created_at', { ascending: false })
+  let query = supabase.from('products').select('*')
 
   if (filters.category && filters.category !== 'All') {
     query = query.eq('category', filters.category)
@@ -20,6 +17,7 @@ export async function fetchProducts(filters = {}) {
   else if (filters.sort === 'price-desc') query = query.order('price', { ascending: false })
   else if (filters.sort === 'rating') query = query.order('rating', { ascending: false })
   else if (filters.sort === 'newest') query = query.order('created_at', { ascending: false })
+  else query = query.order('created_at', { ascending: false })
 
   const { data, error } = await query
   if (error) throw error

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
-import { listUsers, updateUserRole } from '../supabase/admin';
+import { useAuth } from '../context/AuthContext';
+import { listUsers, deleteUser } from '../supabase/admin';
 import { Button } from '../components/common/Button';
 import {
   Spinner,
@@ -10,6 +11,7 @@ import {
 
 export function AdminUsersPage() {
   useDocumentTitle('Admin users');
+  const { user: authUser } = useAuth();
   const [users, setUsers] = useState([]);
   const [status, setStatus] = useState('loading');
   const [error, setError] = useState(null);
@@ -30,17 +32,15 @@ export function AdminUsersPage() {
     loadUsers();
   }, []);
 
-  const handleRoleChange = async (userId, role) => {
+  const handleDeleteUser = async (userId) => {
     setStatus('loading');
     setError(null);
     try {
-      const updated = await updateUserRole(userId, role);
-      setUsers((prev) =>
-        prev.map((user) => (user.id === userId ? updated : user)),
-      );
+      await deleteUser(userId);
+      setUsers((prev) => prev.filter((user) => user.id !== userId));
       setStatus('succeeded');
     } catch (err) {
-      setError(err?.message || 'Failed to update role');
+      setError(err?.message || 'Failed to delete user');
       setStatus('failed');
     }
   };
@@ -77,17 +77,22 @@ export function AdminUsersPage() {
                   <p className="mt-1 text-xs text-ink/50">{user.email}</p>
                 </div>
                 <div className="flex flex-wrap items-center gap-3">
-                  <span className="font-mono text-xs uppercase tracking-widest2 text-ink/60">
-                    Role
-                  </span>
-                  <select
-                    value={user.role}
-                    onChange={(e) => handleRoleChange(user.id, e.target.value)}
-                    className="rounded border border-line bg-transparent px-3 py-2 text-sm focus:border-ink focus:outline-none"
+                  <div className="text-sm text-ink/60">
+                    <span className="block font-mono text-xs uppercase tracking-widest2">
+                      Role
+                    </span>
+                    <span className="block rounded border border-line bg-transparent px-3 py-2 text-sm">
+                      {user.role}
+                    </span>
+                  </div>
+                  <Button
+                    $variant="danger"
+                    type="button"
+                    onClick={() => handleDeleteUser(user.id)}
+                    disabled={authUser?.id === user.id}
                   >
-                    <option value="user">user</option>
-                    <option value="admin">admin</option>
-                  </select>
+                    Delete
+                  </Button>
                 </div>
               </div>
             </div>
