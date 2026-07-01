@@ -32,10 +32,10 @@ export function OrderDetailPage() {
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
       <p className="eyebrow text-moss">Order confirmed</p>
       <h1 className="mt-2 font-display text-3xl sm:text-4xl">
-        Thank you, {order.customer.fullName.split(' ')[0]}.
+        감사합니다, {order.customer.fullName.split(' ')[0]}
       </h1>
       <p className="mt-3 text-ink/60">
-        Your order <span className="font-mono">{order.id}</span> was placed on{' '}
+        Your order <span className="font-mono">{order.id}</span> was placed on{''}
         {new Date(order.created_at).toLocaleString()}.
       </p>
       <div className="mt-8 grid gap-10 lg:grid-cols-[2fr_1fr]">

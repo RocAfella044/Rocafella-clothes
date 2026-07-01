@@ -47,7 +47,7 @@ export function AdminDashboardPage() {
           Dashboard
         </h1>
         <p className="mt-4 text-ink/60">
-          Manage products, orders, and users from here.
+          이곳에서 상품, 주문, 사용자를 관리하세요.
         </p>
       </div>
 
@@ -72,9 +72,7 @@ export function AdminDashboardPage() {
           <div className="rounded-xl border border-line bg-sand p-6">
             <p className="eyebrow">Total Orders</p>
             <p className="mt-4 text-4xl font-display">{counts.orders}</p>
-            <p className="mt-3 text-sm text-ink/60">
-              View all orders in here.
-            </p>
+            <p className="mt-3 text-sm text-ink/60">View all orders in here.</p>
             <Link to="/admin/orders">
               <Button $variant="secondary" className="mt-7">
                 view Orders
